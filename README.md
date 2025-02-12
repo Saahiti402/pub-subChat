@@ -1,6 +1,3 @@
-Here's a beautiful README file for your project in markdown format:
-
----
 
 # **Chat Application with Pub/Sub Model Using Kafka**
 
