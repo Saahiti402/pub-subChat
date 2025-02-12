@@ -128,34 +128,3 @@ You can run the frontend by opening `index.html` in your browser. It should conn
 }
 ```
 
-## **Contributing**
-
-1. **Fork the repository**.
-2. **Create a new branch** for your feature or bug fix:
-   ```bash
-   git checkout -b feature/my-feature
-   ```
-3. **Make your changes**.
-4. **Commit your changes**:
-   ```bash
-   git commit -m "Add new feature"
-   ```
-5. **Push to your fork**:
-   ```bash
-   git push origin feature/my-feature
-   ```
-6. **Open a Pull Request**.
-
-## **License**
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## **Contact**
-
-For any inquiries, you can reach out to me at:  
-**Email**: [your-email@example.com]  
-**GitHub**: [github.com/your-username](https://github.com/your-username)
-
----
-
-Feel free to modify and customize this `README.md` further to reflect your personal or project-specific information.
