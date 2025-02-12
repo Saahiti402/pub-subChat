@@ -1,99 +1,161 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+Here's a beautiful README file for your project in markdown format:
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+---
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+# **Chat Application with Pub/Sub Model Using Kafka**
 
-## Description
+This project implements a real-time chat application utilizing a **Pub/Sub (Publish-Subscribe)** model powered by **Kafka**. The backend is built using **NestJS** while the front end uses basic **HTML**, **CSS**, and **JavaScript**.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## **Features**
 
-## Project setup
+- **Real-Time Messaging**: Send and receive messages in real-time between users using **WebSockets**.
+- **Kafka Pub/Sub Model**: The chat app implements the **Kafka Pub/Sub** model to broadcast messages efficiently to multiple clients.
+- **Message Persistence**: Messages are saved to a database for later retrieval.
+- **User Authentication**: Each message sent is associated with a user to keep track of who sent what.
+- **Dockerized Kafka**: Kafka runs in a Docker container, simplifying setup and scaling.
+- **Simple Web UI**: Users can enter their username and start chatting immediately.
 
+## **Technologies Used**
+
+- **NestJS**: A progressive Node.js framework for building efficient and scalable server-side applications.
+- **Kafka**: A distributed event streaming platform used for real-time messaging and data streaming.
+- **TypeORM**: A TypeScript ORM for interacting with a relational database (e.g., PostgreSQL, MySQL).
+- **WebSockets**: For real-time communication between the client and server.
+- **Docker**: To containerize Kafka for isolated environment deployment.
+- **HTML/CSS/JavaScript**: For building a simple front-end interface that interacts with the backend.
+- **PostgreSQL**: The relational database used for persisting message and user data.
+
+## **Architecture Overview**
+
+### **Components**
+
+1. **Backend**:
+   - **NestJS** server running with WebSocket Gateway for real-time communication.
+   - **Kafka** handles the messaging flow using a Pub/Sub model.
+   - **Database** (e.g., PostgreSQL) stores user and message data using TypeORM.
+
+2. **Frontend**:
+   - Simple HTML, CSS, and JavaScript interface to interact with the chat.
+   - Connects to the backend WebSocket server for real-time messaging.
+   
+3. **Kafka**:
+   - Kafka acts as the **Pub/Sub** middleware for broadcasting messages to all active clients.
+
+### **How it Works**
+1. The user sends a message via the frontend.
+2. The message is processed and published to Kafka.
+3. Kafka broadcasts the message to all subscribed clients.
+4. All connected clients receive the message in real-time through WebSocket.
+
+## **Installation & Setup**
+
+Follow the steps below to get the project up and running on your local machine:
+
+### **1. Clone the Repository**
 ```bash
-$ npm install
+git clone https://github.com/your-username/chat-application.git
+cd chat-application
 ```
 
-## Compile and run the project
+### **2. Setup Kafka (Docker)**
 
+If you have **Docker** installed, you can use the following commands to run Kafka in a container:
+
+1. **Start Kafka with Docker Compose** (make sure Docker is running):
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+docker-compose up -d
 ```
 
-## Run tests
+2. Kafka will be available at `localhost:9092`.
+
+### **3. Install Backend Dependencies**
+
+Navigate to the backend folder and install dependencies:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+cd backend
+npm install
 ```
 
-## Deployment
+### **4. Setup Database**
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Ensure that your database (e.g., PostgreSQL) is running. Create a database and configure the connection in the `ormconfig.json` or `.env` file.
 
 ```bash
-$ npm install -g mau
-$ mau deploy
+# Example for PostgreSQL:
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=your-username
+DB_PASSWORD=your-password
+DB_DATABASE=chatdb
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### **5. Run the Backend**
 
-## Resources
+Run the NestJS server:
 
-Check out a few resources that may come in handy when working with NestJS:
+```bash
+npm run start:dev
+```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+This will start the backend server on `http://localhost:3000`.
 
-## Support
+### **6. Run Frontend**
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+You can run the frontend by opening `index.html` in your browser. It should connect to the backend and allow you to send messages.
 
-## Stay in touch
+### **7. Test the Chat**
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+1. Open multiple browser tabs or different browsers.
+2. Enter a username and start sending messages.
+3. Messages will appear in real-time across all connected clients.
 
-## License
+## **API Endpoints**
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+### **WebSocket Events**
+
+- **sendMessage**: Emits when a user sends a message.
+  - **Payload**: `{ user: string, content: string }`
+  
+- **receiveMessage**: Broadcasts the received message to all clients.
+  - **Payload**: `{ user: string, content: string }`
+
+### **Sample Message Structure**
+```json
+{
+  "user": "JohnDoe",
+  "content": "Hello, World!"
+}
+```
+
+## **Contributing**
+
+1. **Fork the repository**.
+2. **Create a new branch** for your feature or bug fix:
+   ```bash
+   git checkout -b feature/my-feature
+   ```
+3. **Make your changes**.
+4. **Commit your changes**:
+   ```bash
+   git commit -m "Add new feature"
+   ```
+5. **Push to your fork**:
+   ```bash
+   git push origin feature/my-feature
+   ```
+6. **Open a Pull Request**.
+
+## **License**
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## **Contact**
+
+For any inquiries, you can reach out to me at:  
+**Email**: [your-email@example.com]  
+**GitHub**: [github.com/your-username](https://github.com/your-username)
+
+---
+
+Feel free to modify and customize this `README.md` further to reflect your personal or project-specific information.
